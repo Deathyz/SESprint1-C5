@@ -1,10 +1,22 @@
-<nb-card>
-  <nb-card-header>
-    Smart Table
-  </nb-card-header>
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { StoreComponent } from './store.component';
+import { ThemeModule } from '../../@theme/theme.module';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
-  <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
-    </ng2-smart-table>
-  </nb-card-body>
-</nb-card>
+
+@NgModule({
+  imports: [
+    ThemeModule,
+    Ng2SmartTableModule,
+  ],
+  declarations: [
+    StoreComponent,
+  ],
+})
+
+
+
+
+
+export class StoreModule { }
