@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { HttpClient , HttpHeaders  , HttpErrorResponse } from '@angular/common/http';
 
-import { APIData , LoginData } from './models/api.data.structure'
+import { APIData , LoginData, ProductData } from './models/api.data.structure'
 
 
 @Injectable()
@@ -28,5 +28,8 @@ export class APIService {
 
   login(loginData: LoginData): Observable<APIData> {
     return this.http.post<APIData>(this.apiUrl + 'auth/login', loginData).catch(this.errorHandler);
+  }
+  createProduct(productData: ProductData): Observable<APIData>{
+    return this.http.post<ProductData>(this.apiUrl + 'product/createProduct', productData).catch(this.errorHandler);
   }
 }
