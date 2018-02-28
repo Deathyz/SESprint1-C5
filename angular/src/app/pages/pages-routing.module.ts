@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { StoreComponent } from './pages.component';
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
@@ -16,7 +16,13 @@ const routes: Routes = [{
   }, {
     path: 'signup',
     loadChildren: './signup/signup.module#SignupModule',
-  },{
+  },
+  {
+    path: 'store',
+    component: StoreComponent,
+  },
+
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
