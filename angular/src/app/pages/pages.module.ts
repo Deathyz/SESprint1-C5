@@ -4,6 +4,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
+import { StoreModule } from './store/store.module';
 
 const PAGES_COMPONENTS = [
   PagesComponent,
@@ -11,6 +12,7 @@ const PAGES_COMPONENTS = [
 
 @NgModule({
   imports: [
+    StoreModule,
     PagesRoutingModule,
     ThemeModule,
     DashboardModule,

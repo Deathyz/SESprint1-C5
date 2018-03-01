@@ -5,13 +5,14 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
 import { ContactsComponent } from './contacts/contacts.component';
+//import { StoreComponent } from './store.component';
 @NgModule({
   imports: [
     ThemeModule,
     NgxEchartsModule,
   ],
   declarations: [
-    DashboardComponent,
+  DashboardComponent,
     ContactsComponent,
   ],
 })

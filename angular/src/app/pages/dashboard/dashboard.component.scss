@@ -3,17 +3,16 @@
 @import '~@nebular/theme/styles/global/bootstrap/breakpoints';
 
 @include nb-install-component() {
-
-  .paragraph{
-    text-align: justify;
-    max-width:100%;
-    max-height:100%;
+  .solar-card nb-card-header {
+    border: none;
+    padding-bottom: 0;
   }
-//  @include media-breakpoint-down(sm) {
-  //  ngx-traffic {
-    //  display: none;
-    //}
-  //}
+
+  @include media-breakpoint-down(sm) {
+    ngx-traffic {
+      display: none;
+    }
+  }
 
   @include media-breakpoint-down(is) {
     /deep/ nb-card.large-card {
