@@ -15,7 +15,61 @@ export class StoreComponent implements OnInit {
 
   ngOnInit() {
   }
+  settings = {
+    add: {
+      addButtonContent: '<i class="nb-plus"></i>',
+      createButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    },
+    edit: {
+      editButtonContent: '<i class="nb-edit"></i>',
+      saveButtonContent: '<i class="nb-checkmark"></i>',
+      cancelButtonContent: '<i class="nb-close"></i>',
+    },
+    delete: {
+      deleteButtonContent: '<i class="nb-trash"></i>',
+      confirmDelete: true,
+    },
+    columns:{
+      id: {
+        title: 'ID',
+        type: 'number',
+      },
+      name: {
+        title: 'Name',
+        type: 'string',
+      },
+      price: {
+        title: 'Price',
+        type: 'number',
+      },
+      createdAt: {
+        title: 'CreatedAt',
+        type: 'string',
+      },
+      updatedAt: {
+        title: 'UpdatedAt',
+        type: 'string',
+      },
+      seller: {
+        title: 'Seller',
+        type: 'string',
+      },
+    },
 
+};
+TableData: LocalDataSource = new LocalDataSource();
 
+  constructor(private _apiService: APIService) {
+    this.TableData.onAdded().subscribe((productData :ProductData)=>{
+     console.log(productData);
+      this._apiService.createProduct(productData).subscribe((apiresponse: APIData)=>{
+        console.log(apiresponse.msg);
+      });
+    });
 
+    this._apiService.getProducts().subscribe((apiresponse: APIData)=>{
+      this.TableData.load( apiresponse.data);
+    });
+}
 }
