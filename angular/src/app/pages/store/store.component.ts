@@ -14,6 +14,7 @@ import { APIData  , ProductData } from '../../app_services/models/api.data.struc
 export class StoreComponent implements OnInit {
 
   ngOnInit() {
+    this.referesh();
   }
   settings = {
     action:{
@@ -72,10 +73,12 @@ export class StoreComponent implements OnInit {
 source: LocalDataSource = new LocalDataSource();
 
   constructor(private _apiService: APIService) {
+    
     this.source.onAdded().subscribe((productData :ProductData)=>{
       this._apiService.createProduct(productData).subscribe((apiresponse: APIData)=>{
         console.log(apiresponse.msg);
-        });
+        this.referesh();  
+      });
     });
 
     this._apiService.getProducts().subscribe((apiresponse: APIData)=>{
@@ -91,20 +94,22 @@ source: LocalDataSource = new LocalDataSource();
     this.source.onRemoved().subscribe((productData :ProductData)=>{
       this._apiService.deleteProduct(productData).subscribe((apiresponse: APIData)=>{
         console.log(apiresponse);
-        this.referesh;
-
+        this.referesh();
       });
+
+
     });
     this.source.onUpdated().subscribe((productData :ProductData)=>{
       this._apiService.editProduct(productData).subscribe((apiresponse: APIData)=>{
         console.log(apiresponse);
-        this.referesh;
-
+        this.referesh();
       });
+
     });
   
+  
 }
-private referesh(): void {
+referesh(): void {
   this._apiService.getProducts().subscribe((apiresponse: APIData)=>{
     for (var i = 0 ; i < apiresponse.data.length ; i++ )
       apiresponse.data[i].id = (i+1);
