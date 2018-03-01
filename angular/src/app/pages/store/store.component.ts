@@ -58,18 +58,17 @@ export class StoreComponent implements OnInit {
     },
 
 };
-TableData: LocalDataSource = new LocalDataSource();
+source: LocalDataSource = new LocalDataSource();
 
   constructor(private _apiService: APIService) {
-    this.TableData.onAdded().subscribe((productData :ProductData)=>{
-     console.log(productData);
+    this.source.onAdded().subscribe((productData :ProductData)=>{
       this._apiService.createProduct(productData).subscribe((apiresponse: APIData)=>{
         console.log(apiresponse.msg);
       });
     });
 
     this._apiService.getProducts().subscribe((apiresponse: APIData)=>{
-      this.TableData.load( apiresponse.data);
+      this.source.load( apiresponse.data);
     });
 }
 }
