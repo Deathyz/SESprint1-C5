@@ -91,12 +91,12 @@ export class StoreComponent implements OnInit {
       });
     });
 
-    //this.source.onUpdated().subscribe((productData :ProductData)=>{
-    //  this._apiService.updateProduct(productData).subscribe((apiresponse: APIData)=>{
-      //  this.showToast( 'default' , 'Message', apiresponse.msg.toString());
-      //  this.reloadData();
-      //});
-    //});
+    this.source.onUpdated().subscribe((productData :ProductData)=>{
+      this._apiService.updateProduct(productData).subscribe((apiresponse: APIData)=>{
+        this.showToast( 'default' , 'Message', apiresponse.msg.toString());
+        this.reloadData();
+      });
+    });
 
     this.source.onRemoved().subscribe((productData :ProductData)=>{
       this._apiService.deleteProduct(productData).subscribe((apiresponse: APIData)=>{

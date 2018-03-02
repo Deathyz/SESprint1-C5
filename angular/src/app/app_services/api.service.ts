@@ -22,10 +22,9 @@ export class APIService {
     return this.http.get<APIData>( this.apiUrl + 'product/getProducts')
     .catch(this.errorHandler);
   }
-  //updateProduct(productdata:ProductData):Observable<APIData> {
-    //return this.http.patch<ProductData>( this.apiUrl + 'product/updateProduct/' + productdata._id , productdata)
-    //.catch(this.errorHandler);
-//  }
+  updateProduct(productdata:ProductData):Observable<APIData> {
+    return this.http.patch<ProductData>( this.apiUrl + 'product/updateProduct/' + productdata._id , productdata)
+    .catch(this.errorHandler);  }
 
   deleteProduct(productdata:ProductData):Observable<APIData> {
     return this.http.delete<ProductData>( this.apiUrl + '/product/deleteProduct/' + productdata._id)
