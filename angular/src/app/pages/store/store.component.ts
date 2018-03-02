@@ -11,13 +11,54 @@ import { APIData  , ProductData } from '../../app_services/models/api.data.struc
   styleUrls: ['./template/store.component.scss']
 })
 
-export class StoreComponent implements OnInit{
-  ngOnInit() {
+export class StoreComponent implements OnInit {
 
+  ngOnInit() {
+    let user: string = localStorage.getItem('type');
+    if(JSON.parse(user)=== "user"){
+      console.log('1');
+
+      this.settings.actions={
+        add: false,
+      edit: false,
+       delete: false,
+       columnTitle: 'Search',
+      };
+
+    }
+    else if(JSON.parse(user) === "admin"){
+
+      console.log('3');
+
+      this.settings.actions={
+        add: true,
+      edit: true,
+       delete: true,
+       columnTitle: 'Search',
+      };
+
+    }
+    else if(JSON.parse(user) === "manager"){
+      console.log('2');
+
+      this.settings.actions={
+        add: true,
+      edit: true,
+       delete: false,
+       columnTitle: 'Search',
+      };
+
+    }
     this.refresh();
   }
 
   settings = {
+    actions: {
+      add: false,
+      edit: false,
+       delete: false,
+      columnTitle: 'Search'
+    },
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
@@ -62,8 +103,7 @@ export class StoreComponent implements OnInit{
       seller: {
         title: 'Seller',
         type: 'string',
-        editable : false,
-        addable :false,
+
       },
     },
   };
