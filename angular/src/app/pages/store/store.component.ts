@@ -13,11 +13,47 @@ import { APIData  , ProductData } from '../../app_services/models/api.data.struc
 
 export class StoreComponent implements OnInit {
 
-  ngOnInit() {
+    ngOnInit() {
+      let type: string = localStorage.getItem('currentUser')
+      if(type === "admin"){
+        console.log('admin');
+        this.settings.actions={
+          add: true,
+        edit: true,
+         delete: true,
+        };
+       
+      }
+      else if(type === "manager"){
+        console.log('manager');
+        this.settings.actions={
+          add: true,
+        edit: true,
+         delete: false,
+        };
+       
+      
+      }
+      else{
+        console.log('user');
+        this.settings.actions={
+          add: false,
+        edit: false,
+         delete: false,
+        };
+       
+      }
+    
     this.referesh();
   }
   settings = {
-    action:{
+    editor: {
+      config: false
+    },
+    actions:{
+      // add: false,
+      // edit: false,
+      //  delete: false,
     },
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -92,6 +128,7 @@ source: LocalDataSource = new LocalDataSource();
   
 
     this.source.onRemoved().subscribe((productData :ProductData)=>{
+      console.log(productData);
       this._apiService.deleteProduct(productData).subscribe((apiresponse: APIData)=>{
         console.log(apiresponse);
         this.referesh();

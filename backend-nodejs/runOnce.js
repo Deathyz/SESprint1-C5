@@ -9,7 +9,9 @@ MongoClient.connect(url, function(err, db) {
   var dbo = db.db("Store-Database");  
 
   var ProductsObj = [
-
+    { name: 'kebab',price: 40,createdAt: '2018-03-02 17:25:14.623',updatedAt:'',seller:'Mohamed Adel'},
+    { name: 'blueberry',price: 10,createdAt: '2018-03-02 18:35:14.623',updatedAt:'',seller:'Mohamed Adel'},
+    { name: 'banna',price:20 ,createdAt: '2018-03-02 17:40:14.623',updatedAt:'',seller:'Mohamed Adel'},
   ];
 
   var usersObj = [
@@ -21,7 +23,7 @@ MongoClient.connect(url, function(err, db) {
   ];
 
   var collectionsObj = [
-    {name: 'Products', data: null},
+    {name: 'Products', data: ProductsObj},
     {name: 'Users', data: usersObj},
   ];
 
