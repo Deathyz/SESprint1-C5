@@ -6,7 +6,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { HttpClient , HttpHeaders  , HttpErrorResponse } from '@angular/common/http';
 
-import { APIData , LoginData } from './models/api.data.structure'
+import { APIData , LoginData ,ProductData} from './models/api.data.structure'
+
+
 
 
 @Injectable()
@@ -17,10 +19,24 @@ export class APIService {
   errorHandler(error: HttpErrorResponse){
     return Observable.throw(error.message || "Server Error");
   }
+  createProduct(productdata: ProductData): Observable<APIData>{
+    return this.http.post<ProductData>(this.apiUrl+ 'product/createProduct', productdata).catch(this.errorHandler);
+  }
+
+   editProduct(productdata:ProductData):Observable<APIData>{
+    return this.http.patch<ProductData>(this.apiUrl + '/product/updateProduct/'+productdata._id,productdata)
+    .catch(this.errorHandler);
+ }
+
+  deleteProduct(productdata: ProductData): Observable<APIData>{
+     return this.http.delete<ProductData>(this.apiUrl+ 'product/deleteProduct/' + productdata._id).catch(this.errorHandler);
+   }
 
   getProducts(): Observable<APIData> {
     return this.http.get<APIData>(this.apiUrl + 'product/getProducts').catch(this.errorHandler);
   }
+
+
 
   createUser(loginData: LoginData): Observable<APIData> {
     return this.http.post<APIData>(this.apiUrl + 'user/create', loginData).catch(this.errorHandler);

@@ -54,6 +54,11 @@ export class ContactsComponent implements OnInit, OnDestroy {
         {user: users.Salma},
         {user: users.Shaker},
         {user: users.Hesham},
+        {user: users.NourNounou},
+        {user: users.OmarHany},
+        {user: users.AhmedAlaa},
+        {user: users.AhmedHany},
+        {user: users.EbramIbrahim},
 
 
 
@@ -78,7 +83,11 @@ export class ContactsComponent implements OnInit, OnDestroy {
           {user: users.Salma},
           {user: users.Shaker},
           {user: users.Hesham},
-
+          {user: users.NourNounou},
+        {user: users.OmarHany},
+        {user: users.AhmedAlaa},
+        {user: users.AhmedHany},
+        {user: users.EbramIbrahim},
 
           // {user: users.lee, type: 'mobile', time: '11:24 am'},
           // {user: users.jack, type: 'mobile', time: '10:45 am'},
