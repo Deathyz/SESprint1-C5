@@ -22,6 +22,13 @@ MongoClient.connect(url, function(err, db) {
     {name: 'Iphone7 plus',price: 15000,createdAt: '2018-03-01 17:40:14.623',updatedAt:'',seller:'Tarek Abdelrahman'},
     {name: 'Iphone 9',price: 18000,createdAt: '2018-03-01 18:35:12.623',updatedAt:'',seller:'Tarek Abdelrahman'},
     {name: 'Iphone 10',price: 21000,createdAt: '2018-03-01 19:39:17.623',updatedAt:'',seller:'Tarek Abdelrahman'},
+    {name:'Bread',price:10.5,seller:'Nour Nounou'},
+    {name:'Cheese',price:23.25,seller:'Nour Nounou'},
+    {name:'Milk',price:13,seller:'Nour Nounou'},
+    {name:'Coffee',price:6.75,seller:'Nour Nounou'},
+    {name:'Gum',price:4,seller:'Nour Nounou'},
+    {name:'Plastic Bags',price:1.25,seller:'Nour Nounou'},
+
 
   ];
 

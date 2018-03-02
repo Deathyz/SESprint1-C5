@@ -30,7 +30,7 @@ export class APIService {
     return this.http.post<APIData>(this.apiUrl + 'auth/login', loginData).catch(this.errorHandler);
   }
   createProduct(ProductData:ProductData): Observable<APIData>{
-    return this.http.post<ProductData>('http://localhost:3000/api/'+ 'product/createProduct', ProductData).catch(this.errorHandler);
+    return this.http.post<ProductData>(this.apiUrl+ 'product/createProduct', ProductData).catch(this.errorHandler);
   }
   editProduct(productdata:ProductData):Observable<APIData>{
     return this.http.patch<ProductData>(this.apiUrl + '/product/updateProduct/'+productdata._id,productdata)
