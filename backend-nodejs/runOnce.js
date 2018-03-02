@@ -17,6 +17,11 @@ MongoClient.connect(url, function(err, db) {
     { name: 'Samsung S7 Edge',price: 12000,createdAt: '2018-03-02 4:40:14.623',updatedAt:'',seller:'Mahmoud Gamal'},
     { name: 'Samsung S8',price: 14000,createdAt: '2018-03-02 5:35:12.623',updatedAt:'',seller:'Mahmoud Gamal'},
     { name: 'Samsung Note 8',price: 15000,createdAt: '2018-03-02 6:39:17.623',updatedAt:'',seller:'Mahmoud Gamal'},
+    {name: 'Iphone6',price: 9000,createdAt: '2018-03-01 15:25:14.623',updatedAt:'',seller:'Tarek Abdelrahman'},
+    {name: 'Iphone7',price: 12000,createdAt: '2018-03-01 16:35:14.623',updatedAt:'',seller:'Tarek Abdelrahman'},
+    {name: 'Iphone7 plus',price: 15000,createdAt: '2018-03-01 17:40:14.623',updatedAt:'',seller:'Tarek Abdelrahman'},
+    {name: 'Iphone 9',price: 18000,createdAt: '2018-03-01 18:35:12.623',updatedAt:'',seller:'Tarek Abdelrahman'},
+    {name: 'Iphone 10',price: 21000,createdAt: '2018-03-01 19:39:17.623',updatedAt:'',seller:'Tarek Abdelrahman'},
 
   ];
 
