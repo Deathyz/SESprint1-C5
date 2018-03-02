@@ -34,7 +34,7 @@ export class APIService {
     .catch(this.errorHandler);
   }
   updateProduct(productdata:ProductData):Observable<APIData>{
-   return this.http.patch<ProductData>(this.apiUrl + '/product/updateProduct/'+productdata.id,productdata)
+   return this.http.patch<ProductData>(this.apiUrl + '/product/updateProduct/'+ productdata._id ,productdata)
    .catch(this.errorHandler);
  }
  deleteProduct(productdata:ProductData):Observable<APIData>{

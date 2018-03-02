@@ -6,11 +6,16 @@ var url = "mongodb://localhost:27017/Store-Database";
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db("Store-Database");  
+  var dbo = db.db("Store-Database");
 
   var ProductsObj = [
+   {id: 1, name: 'Samsung S6',price: 8000,createdAt: '2018-03-02 15:25:14.623',updatedAt:'',seller:'Mahmoud Gamal'},
+   {id: 2, name: 'Samsung S7',price: 10000,createdAt: '2018-03-02 16:35:14.623',updatedAt:'',seller:'Mahmoud Gamal'},
+   {id: 3, name: 'Samsung S7 Edge',price: 12000,createdAt: '2018-03-02 17:40:14.623',updatedAt:'',seller:'Mahmoud Gamal'},
+   {id: 4, name: 'Samsung S8',price: 14000,createdAt: '2018-03-02 18:35:12.623',updatedAt:'',seller:'Mahmoud Gamal'},
+   {id: 5, name: 'Samsung Note 8',price: 15000,createdAt: '2018-03-02 19:39:17.623',updatedAt:'',seller:'Mahmoud Gamal'},
 
-  ];
+ ];
 
   var usersObj = [
     { username: '1', password: '1'},
@@ -21,7 +26,7 @@ MongoClient.connect(url, function(err, db) {
   ];
 
   var collectionsObj = [
-    {name: 'Products', data: null},
+    {name: 'Products', data: ProductsObj},
     {name: 'Users', data: usersObj},
   ];
 
@@ -40,4 +45,4 @@ MongoClient.connect(url, function(err, db) {
     console.log("Collection: "+collectionsObj[i].name+" created !");
   }
   console.log("Press Control C");
-}); 
+});

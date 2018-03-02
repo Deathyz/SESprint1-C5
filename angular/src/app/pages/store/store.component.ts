@@ -13,7 +13,8 @@ import { APIData  , ProductData } from '../../app_services/models/api.data.struc
 
 export class StoreComponent implements OnInit{
   ngOnInit() {
-    this.reload();
+
+    this.refresh();
   }
 
   settings = {
@@ -73,7 +74,7 @@ export class StoreComponent implements OnInit{
     this.source.onAdded().subscribe((productData :ProductData)=>{
       this._apiService.createProduct(productData).subscribe((apiresponse: APIData)=>{
         console.log(apiresponse.msg);
-        this.reload();
+        this.refresh();
       });
     });
 
@@ -90,7 +91,7 @@ export class StoreComponent implements OnInit{
     this.source.onRemoved().subscribe((productData :ProductData)=>{
       this._apiService.deleteProduct(productData).subscribe((apiresponse: APIData)=>{
         console.log(apiresponse);
-        this.reload();
+        this.refresh();
       });
 
 
@@ -98,14 +99,14 @@ export class StoreComponent implements OnInit{
     this.source.onUpdated().subscribe((productData :ProductData)=>{
       this._apiService.updateProduct(productData).subscribe((apiresponse: APIData)=>{
         console.log(apiresponse);
-        this.reload();
+        this.refresh();
       });
 
     });
 
 
 }
-reload(): void {
+refresh(): void {
   this._apiService.getProducts().subscribe((apiresponse: APIData)=>{
     for (var i = 0 ; i < apiresponse.data.length ; i++ )
       apiresponse.data[i].id = (i+1);
