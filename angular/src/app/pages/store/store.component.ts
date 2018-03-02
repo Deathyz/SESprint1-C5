@@ -15,7 +15,7 @@ export class StoreComponent implements OnInit {
 
     ngOnInit() {
       let type: string = localStorage.getItem('currentUser')
-      if(type === "admin"){
+      if(type.indexOf('admin') != -1){
         console.log('admin');
         this.settings.actions={
           add: true,
@@ -24,7 +24,7 @@ export class StoreComponent implements OnInit {
         };
        
       }
-      else if(type === "manager"){
+      else if(type.indexOf('manager') != -1){
         console.log('manager');
         this.settings.actions={
           add: true,
