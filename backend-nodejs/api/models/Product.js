@@ -1,10 +1,16 @@
 var mongoose = require('mongoose');
 
 var productSchema = mongoose.Schema({
+  id: {
+       title: 'ID',
+       type: 'number',
+       editable: false,
+       addable: false,
+     },
   name: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   price: {
     type: Number,
@@ -13,12 +19,20 @@ var productSchema = mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    editable: false,
+    addable: false,
   },
   updatedAt:{
     type:Date,
-    default:Date.now
-  } 
+    default:Date.now,
+    editable: false,
+    addable: false,
+  },
+  seller:{
+    type:String,
+  },
+
 },{collection: 'Products'}
 );
 

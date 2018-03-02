@@ -28,12 +28,12 @@ MongoClient.connect(url, function(err, db) {
 
   var ProductsObj = [
 
-    {name:'Bread',price:10.5},
-    {name:'Cheese',price:23.25},
-    {name:'Milk',price:13},
-    {name:'Coffee',price:6.75},
-    {name:'Gum',price:4},
-    {name:'Plastic Bags',price:1.25},
+    {name:'Bread',price:10.5,seller:'nour'},
+    {name:'Cheese',price:23.25,seller:'ahmed'},
+    {name:'Milk',price:13,seller:'ahmed'},
+    {name:'Coffee',price:6.75,seller:'nour'},
+    {name:'Gum',price:4,seller:'nour'},
+    {name:'Plastic Bags',price:1.25,seller:'gamal'},
 
 
   ];
