@@ -29,7 +29,17 @@ export class APIService {
   login(loginData: LoginData): Observable<APIData> {
     return this.http.post<APIData>(this.apiUrl + 'auth/login', loginData).catch(this.errorHandler);
   }
-  createProduct(productData: ProductData): Observable<APIData>{
-    return this.http.post<ProductData>(this.apiUrl + 'product/createProduct', productData).catch(this.errorHandler);
+  createProduct(productdata: ProductData): Observable<APIData>{
+    return this.http.post<ProductData>(this.apiUrl + '/product/createProduct', productdata)
+    .catch(this.errorHandler);
   }
+  updateProduct(productdata:ProductData):Observable<APIData>{
+   return this.http.patch<ProductData>(this.apiUrl + '/product/updateProduct/'+productdata.id,productdata)
+   .catch(this.errorHandler);
+ }
+ deleteProduct(productdata:ProductData):Observable<APIData>{
+   return this.http.delete<ProductData>(this.apiUrl + '/product/deleteProduct/' + productdata._id)
+   .catch(this.errorHandler);
+
+ }
 }

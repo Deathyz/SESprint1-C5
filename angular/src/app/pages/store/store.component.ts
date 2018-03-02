@@ -13,7 +13,7 @@ import { APIData  , ProductData } from '../../app_services/models/api.data.struc
 
 export class StoreComponent implements OnInit{
   ngOnInit() {
-
+    this.reload();
   }
 
   settings = {
@@ -35,6 +35,8 @@ export class StoreComponent implements OnInit{
       id: {
         title: 'ID',
         type: 'number',
+        editable : false,
+        addable :false,
       },
       name: {
         title: 'Name',
@@ -47,36 +49,70 @@ export class StoreComponent implements OnInit{
       createdAt: {
         title: 'CreatedAt',
         type: 'string',
+        editable : false,
+        addable :false,
       },
       updatedAt: {
         title: 'UpdatedAt',
         type: 'string',
+        editable : false,
+        addable :false,
       },
       seller: {
         title: 'Seller',
         type: 'string',
+        editable : false,
+        addable :false,
       },
     },
   };
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private _apiService: APIService) {
+
     this.source.onAdded().subscribe((productData :ProductData)=>{
       this._apiService.createProduct(productData).subscribe((apiresponse: APIData)=>{
         console.log(apiresponse.msg);
+        this.reload();
       });
     });
 
     this._apiService.getProducts().subscribe((apiresponse: APIData)=>{
-      this.source.load( apiresponse.data);
-    });
-  }
+      for (var i = 0 ; i < apiresponse.data.length ; i++ )
+        apiresponse.data[i].id = (i+1);
 
-  onDeleteConfirm(event): void {
-    if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }
-  }
+      console.log(apiresponse.data[0]);
+      this.source.load( apiresponse.data);
+
+    });
+
+
+    this.source.onRemoved().subscribe((productData :ProductData)=>{
+      this._apiService.deleteProduct(productData).subscribe((apiresponse: APIData)=>{
+        console.log(apiresponse);
+        this.reload();
+      });
+
+
+    });
+    this.source.onUpdated().subscribe((productData :ProductData)=>{
+      this._apiService.updateProduct(productData).subscribe((apiresponse: APIData)=>{
+        console.log(apiresponse);
+        this.reload();
+      });
+
+    });
+
+
+}
+reload(): void {
+  this._apiService.getProducts().subscribe((apiresponse: APIData)=>{
+    for (var i = 0 ; i < apiresponse.data.length ; i++ )
+      apiresponse.data[i].id = (i+1);
+    this.source.load(apiresponse.data);
+  });
+}
+onDeleteConfirm(event): void {
+    event.confirm.resolve();
+}
 }
