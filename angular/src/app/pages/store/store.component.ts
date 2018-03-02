@@ -99,8 +99,6 @@ export class StoreComponent implements OnInit {
       seller: {
         title: 'Seller',
         type: 'string',
-        editable : false,
-        addable :false,
         
       },
     },
